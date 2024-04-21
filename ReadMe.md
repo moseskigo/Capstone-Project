@@ -49,99 +49,6 @@ The project followed these steps:
 
 **Data Acquisition Cleaning & Preparation**
 
-
-
-
-```python
-! pip install numpy pandas matplotlib seaborn scikit-learn xgboost eli5 shap scikit-plot
-```
-
-    Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (1.25.2)
-    Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (2.0.3)
-    Requirement already satisfied: matplotlib in /usr/local/lib/python3.10/dist-packages (3.7.1)
-    Requirement already satisfied: seaborn in /usr/local/lib/python3.10/dist-packages (0.13.1)
-    Requirement already satisfied: scikit-learn in /usr/local/lib/python3.10/dist-packages (1.2.2)
-    Requirement already satisfied: xgboost in /usr/local/lib/python3.10/dist-packages (2.0.3)
-    Requirement already satisfied: eli5 in /usr/local/lib/python3.10/dist-packages (0.13.0)
-    Requirement already satisfied: shap in /usr/local/lib/python3.10/dist-packages (0.45.0)
-    Requirement already satisfied: scikit-plot in /usr/local/lib/python3.10/dist-packages (0.3.7)
-    Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/lib/python3.10/dist-packages (from pandas) (2.8.2)
-    Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas) (2023.4)
-    Requirement already satisfied: tzdata>=2022.1 in /usr/local/lib/python3.10/dist-packages (from pandas) (2024.1)
-    Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (1.2.1)
-    Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (0.12.1)
-    Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (4.51.0)
-    Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (1.4.5)
-    Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (24.0)
-    Requirement already satisfied: pillow>=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (9.4.0)
-    Requirement already satisfied: pyparsing>=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib) (3.1.2)
-    Requirement already satisfied: scipy>=1.3.2 in /usr/local/lib/python3.10/dist-packages (from scikit-learn) (1.11.4)
-    Requirement already satisfied: joblib>=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-learn) (1.4.0)
-    Requirement already satisfied: threadpoolctl>=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn) (3.4.0)
-    Requirement already satisfied: attrs>17.1.0 in /usr/local/lib/python3.10/dist-packages (from eli5) (23.2.0)
-    Requirement already satisfied: jinja2>=3.0.0 in /usr/local/lib/python3.10/dist-packages (from eli5) (3.1.3)
-    Requirement already satisfied: six in /usr/local/lib/python3.10/dist-packages (from eli5) (1.16.0)
-    Requirement already satisfied: graphviz in /usr/local/lib/python3.10/dist-packages (from eli5) (0.20.3)
-    Requirement already satisfied: tabulate>=0.7.7 in /usr/local/lib/python3.10/dist-packages (from eli5) (0.9.0)
-    Requirement already satisfied: tqdm>=4.27.0 in /usr/local/lib/python3.10/dist-packages (from shap) (4.66.2)
-    Requirement already satisfied: slicer==0.0.7 in /usr/local/lib/python3.10/dist-packages (from shap) (0.0.7)
-    Requirement already satisfied: numba in /usr/local/lib/python3.10/dist-packages (from shap) (0.58.1)
-    Requirement already satisfied: cloudpickle in /usr/local/lib/python3.10/dist-packages (from shap) (2.2.1)
-    Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2>=3.0.0->eli5) (2.1.5)
-    Requirement already satisfied: llvmlite<0.42,>=0.41.0dev0 in /usr/local/lib/python3.10/dist-packages (from numba->shap) (0.41.1)
-    
-
-
-```python
-# Core libraries for data manipulation and analysis
-import numpy as np
-import pandas as pd
-import math
-
-# Visualization libraries
-import matplotlib.pyplot as plt
-%matplotlib inline
-import seaborn as sns
-import scikitplot as skplt  # Simplified plotting for ML models
-from IPython.display import HTML
-
-# Statistical analysis
-import statsmodels.api as sm
-
-# Machine learning models and utilities
-from sklearn.linear_model import LogisticRegression, LinearRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, GradientBoostingClassifier, StackingClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler, label_binarize
-from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import train_test_split, cross_validate, RandomizedSearchCV, GridSearchCV
-from sklearn.metrics import (accuracy_score, roc_auc_score, mean_squared_error, recall_score, precision_score, roc_curve, auc,
-                             silhouette_score, mean_squared_log_error, mean_absolute_percentage_error, median_absolute_error,
-                             mean_absolute_error, r2_score, confusion_matrix, precision_recall_curve, average_precision_score,
-                             classification_report, ConfusionMatrixDisplay)
-from sklearn.datasets import load_iris, make_regression, make_classification
-
-# Ensemble and boosting frameworks
-import xgboost as xgb
-from xgboost import XGBClassifier
-import lightgbm as lgb
-
-# Model explanation libraries
-import shap
-import eli5
-
-# Model serialization
-import joblib
-import pickle
-
-# Library to control warning messages
-import warnings
-warnings.filterwarnings('ignore')  # Ignore all warning messages
-```
-
-
 ```python
 # Loading Dataset
 path = 'cardio_train.csv'
@@ -149,9 +56,6 @@ df = pd.read_csv(path,delimiter=';')
 #Display the first few rows
 df.head()
 ```
-
-
-
 
 
   <div id="df-ee276431-f7a8-4231-8d60-4e483537725f" class="colab-df-container">
@@ -284,278 +188,37 @@ df.head()
   </svg>
     </button>
 
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-ee276431-f7a8-4231-8d60-4e483537725f button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-ee276431-f7a8-4231-8d60-4e483537725f');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-cdfede6e-65f4-42ab-a759-d2997600d64b">
-  <button class="colab-df-quickchart" onclick="quickchart('df-cdfede6e-65f4-42ab-a759-d2997600d64b')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-cdfede6e-65f4-42ab-a759-d2997600d64b button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-
-
-
 
 # **Data description**
 
 There are 3 types of input features:
 
-* Objective: factual information;
-* Examination: results of medical examination;
-* Subjective: information given by the patient.
+1. **Objective** : factual information;
+2. **Examination** : results of medical examination;
+3. **Subjective** : information given by the patient.
 
 Features:
 
-1. Age | Objective Feature | age | int (days)
-2. Height | Objective Feature | height | int (cm) |
-3. Weight | Objective Feature | weight | float (kg) |
-4. Gender | Objective Feature | gender | categorical code | 1:Female, 2:Male |
-5. Systolic blood pressure | Examination Feature | ap_hi | int |
-6. Diastolic blood pressure | Examination Feature | ap_lo | int |
-7. Cholesterol | Examination Feature | cholesterol | 1: normal, 2: above normal, 3: well above normal |
-8. Glucose | Examination Feature | gluc | 1: normal, 2: above normal, 3: well above normal |
-9. Smoking | Subjective Feature | smoke | binary |
-10. Alcohol intake | Subjective Feature | alco | binary |
-11. Physical activity | Subjective Feature | active | binary |
-12. Presence or absence of cardiovascular disease | Target Variable | cardio | binary |
+| Number | Column Name | Description | Feature Type | Data Type |
+|--------|-------------|-------------|--------------|-----------|
+| 1 | age | Age | Objective Feature | int (days) |
+| 2 | height | Height | Objective Feature | int (cm) |
+| 3 | weight | Weight | Objective Feature | float (kg) |
+| 4 | gender | Gender | Objective Feature | categorical code; 1:Female, 2:Male |
+| 5 | ap_hi | Systolic blood pressure | Examination Feature | int |
+| 6 | ap_lo | Diastolic blood pressure | Examination Feature | int |
+| 7 | cholesterol | Cholesterol | Examination Feature | 1: normal, 2: above normal, 3: well above normal |
+| 8 | gluc | Glucose | Examination Feature | 1: normal, 2: above normal, 3: well above normal |
+| 9 | smoke | Smoking | Subjective Feature | binary |
+| 10 | alco | Alcohol intake | Subjective Feature | binary |
+| 11 | active | Physical activity | Subjective Feature | binary |
+| 12 | cardio | Presence or absence of cardiovascular disease | Target Variable | binary |
 
 **Data cleaning**
 
-
-```python
-#Checking for missing values
-df.isna().sum()
-```
-
-
-
-
-    id             0
-    age            0
-    gender         0
-    height         0
-    weight         0
-    ap_hi          0
-    ap_lo          0
-    cholesterol    0
-    gluc           0
-    smoke          0
-    alco           0
-    active         0
-    cardio         0
-    dtype: int64
-
-
-
-There are no missing values in this dataset
-
-
-```python
-#Checking for duplicate rows
-duplicates = df[df.duplicated()]
-
-if len(duplicates) > 0:
-    print("Duplicates found:")
-    print(duplicates)
-else:
-    print("No duplicates found.")
-```
-
-    No duplicates found.
-    
-
-There are no duplicated rows in this data set
+There are no missing values or duplicates in this dataset
 
 **Summary Statistics**
-
 
 ```python
 #concise summary of the dataset
@@ -582,56 +245,8 @@ df.info()
      12  cardio       70000 non-null  int64  
     dtypes: float64(1), int64(12)
     memory usage: 6.9 MB
+
     
-
-
-```python
-#summary statistics for the data set
-summary = df.describe()
-print('summary statistics', summary)
-```
-
-    summary statistics                  id           age        gender        height        weight  \
-    count  70000.000000  70000.000000  70000.000000  70000.000000  70000.000000   
-    mean   49972.419900  19468.865814      1.349571    164.359229     74.205690   
-    std    28851.302323   2467.251667      0.476838      8.210126     14.395757   
-    min        0.000000  10798.000000      1.000000     55.000000     10.000000   
-    25%    25006.750000  17664.000000      1.000000    159.000000     65.000000   
-    50%    50001.500000  19703.000000      1.000000    165.000000     72.000000   
-    75%    74889.250000  21327.000000      2.000000    170.000000     82.000000   
-    max    99999.000000  23713.000000      2.000000    250.000000    200.000000   
-    
-                  ap_hi         ap_lo   cholesterol          gluc         smoke  \
-    count  70000.000000  70000.000000  70000.000000  70000.000000  70000.000000   
-    mean     128.817286     96.630414      1.366871      1.226457      0.088129   
-    std      154.011419    188.472530      0.680250      0.572270      0.283484   
-    min     -150.000000    -70.000000      1.000000      1.000000      0.000000   
-    25%      120.000000     80.000000      1.000000      1.000000      0.000000   
-    50%      120.000000     80.000000      1.000000      1.000000      0.000000   
-    75%      140.000000     90.000000      2.000000      1.000000      0.000000   
-    max    16020.000000  11000.000000      3.000000      3.000000      1.000000   
-    
-                   alco        active        cardio  
-    count  70000.000000  70000.000000  70000.000000  
-    mean       0.053771      0.803729      0.499700  
-    std        0.225568      0.397179      0.500003  
-    min        0.000000      0.000000      0.000000  
-    25%        0.000000      1.000000      0.000000  
-    50%        0.000000      1.000000      0.000000  
-    75%        0.000000      1.000000      1.000000  
-    max        1.000000      1.000000      1.000000  
-    
-
-
-```python
-#Counting the number of unique values for categorical columns.
-categorical_columns = ['gender', 'cholesterol', 'gluc', 'smoke', 'alco', 'active', 'cardio']
-unique_value_counts = df[categorical_columns].nunique()
-
-print("Number of unique values for each categorical column:")
-print(unique_value_counts)
-```
-
     Number of unique values for each categorical column:
     gender         2
     cholesterol    3
@@ -645,158 +260,24 @@ print(unique_value_counts)
 
 **Data Visualization**
 
-
-```python
-#Visualizing the distribution of numerical variables using histograms
-
-numerical_columns = ['age', 'height', 'weight', 'ap_hi', 'ap_lo']
-
-# Creating subplots
-fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(18, 10))
-axes = axes.flatten()
-
-# Plotting histograms for each numerical column
-for i, col in enumerate(numerical_columns):
-    sns.histplot(df[col], bins=20, color='skyblue', ax=axes[i], kde=True)
-    axes[i].set_title(f'Histogram of {col}')
-    axes[i].set_xlabel(col)
-    axes[i].set_ylabel('Frequency')
-
-# Adjusting layout
-plt.tight_layout()
-plt.show()
-```
-
+# The distribution of numerical variables using histograms
 
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_21_0.png)
     
-
-
-
-```python
-# box plot plotting to check on outliers
-numerical_columns = ['age', 'height', 'weight', 'ap_hi', 'ap_lo']
-
-# Creating subplots
-fig, axes = plt.subplots(nrows=1, ncols=len(numerical_columns), figsize=(18, 6))
-
-# Plotting box plots for each numerical column
-for i, col in enumerate(numerical_columns):
-    sns.boxplot(x=df[col], ax=axes[i])
-    axes[i].set_title(f'Box plot of {col}')
-    axes[i].set_xlabel(col)
-
-# Adjusting layout
-plt.tight_layout()
-plt.show()
-```
-
-
+# Box plot plotting to check on outliers
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_22_0.png)
-    
-
-
-
-```python
-#Exploring the relationship between numerical variables using scatter plot
-numerical_columns = ['age', 'height', 'weight', 'ap_hi', 'ap_lo']
-
-# Creating subplots
-fig, axes = plt.subplots(nrows=len(numerical_columns), ncols=len(numerical_columns), figsize=(18, 18))
 
 # Plotting scatter plots for each pair of numerical columns
-for i in range(len(numerical_columns)):
-    for j in range(len(numerical_columns)):
-        if i != j:
-            sns.scatterplot(x=df[numerical_columns[j]], y=df[numerical_columns[i]], ax=axes[i, j])
-            axes[i, j].set_title(f'{numerical_columns[i]} vs {numerical_columns[j]}')
-            axes[i, j].set_xlabel(numerical_columns[j])
-            axes[i, j].set_ylabel(numerical_columns[i])
-        else:
-            axes[i, j].axis('off')
-
-# Adjusting layout
-plt.tight_layout()
-plt.show()
-```
-
-
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_23_0.png)
     
-
-
-
-```python
-#distribution of categorical features
-
-# categorical columns
-categorical_columns = ['gender', 'cholesterol', 'gluc', 'smoke', 'alco', 'active', 'cardio']
-# Defining the number of rows and columns for subplots
-num_rows = 2
-num_cols = (len(categorical_columns) + num_rows - 1) // num_rows
-
-# Creating subplots
-fig, axes = plt.subplots(num_rows, num_cols, figsize=(8, 6))
-axes = axes.flatten()
-
-# Plotting pie charts for each categorical column
-for i, col in enumerate(categorical_columns):
-    value_counts = df[col].value_counts()
-    explode = [0.1] + [0] * (len(value_counts) - 1)  # Explode the first slice
-    value_counts.plot(kind='pie', autopct='%1.1f%%',
-                      colors=['skyblue', 'lightgreen', 'lightcoral', 'orange'],
-                      explode=explode, shadow=False, ax=axes[i])
-    axes[i].set_title(f'{col}')
-    axes[i].set_ylabel('')
-
-# Hiding empty subplots
-for j in range(len(categorical_columns), num_rows * num_cols):
-    fig.delaxes(axes[j])
-
-# Adjusting layout
-plt.tight_layout()
-plt.show()
-```
-
-
+# The distribution of categorical features
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_24_0.png)
     
-
-
-
-```python
-#Exploring the relationship between categorical and numerical variables using  violin plots.
-categorical_columns = ['gender', 'cholesterol', 'gluc', 'smoke', 'alco', 'active', 'cardio']
-numerical_columns = ['age', 'height', 'weight', 'ap_hi', 'ap_lo']
-
-
-# Defining the number of rows and columns for subplots
-num_rows = len(categorical_columns)
-num_cols = len(numerical_columns)
-
-# Creating subplots
-fig, axes = plt.subplots(num_rows, num_cols, figsize=(18, 14))
-axes = axes.flatten()
-
-# Plotting violin plots for each pair of categorical and numerical columns
-for i, cat_col in enumerate(categorical_columns):
-    for j, num_col in enumerate(numerical_columns):
-        sns.violinplot(x=cat_col, y=num_col, data=df, ax=axes[i * num_cols + j], palette="muted")
-        axes[i * num_cols + j].set_title(f'Violin plot of {num_col} vs {cat_col}')
-        axes[i * num_cols + j].set_xlabel(cat_col)
-        axes[i * num_cols + j].set_ylabel(num_col)
-        axes[i * num_cols + j].grid(True)
-
-# Adjusting layout
-plt.tight_layout()
-plt.show()
-```
-
-
+# The relationship between categorical and numerical variables using  violin plots.
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_25_0.png)
     
@@ -804,286 +285,26 @@ plt.show()
 
 **Correlation Analysis**
 
+# Correlation Matrix Heatmap
 
-```python
-# Calculating correlation matrix of numerical variables
-numerical_columns = ['cardio','age', 'height', 'weight', 'ap_hi', 'ap_lo']
-correlation_matrix = df[numerical_columns].corr()
-
-print("Correlation Matrix:")
-print(correlation_matrix)
-```
-
-    Correlation Matrix:
-              cardio       age    height    weight     ap_hi     ap_lo
-    cardio  1.000000  0.238159 -0.010821  0.181660  0.054475  0.065719
-    age     0.238159  1.000000 -0.081515  0.053684  0.020764  0.017647
-    height -0.010821 -0.081515  1.000000  0.290968  0.005488  0.006150
-    weight  0.181660  0.053684  0.290968  1.000000  0.030702  0.043710
-    ap_hi   0.054475  0.020764  0.005488  0.030702  1.000000  0.016086
-    ap_lo   0.065719  0.017647  0.006150  0.043710  0.016086  1.000000
-    
-
-
-```python
-#Visualizing the correlation matrix using a heatmap to identify strong correlations between variables.
-numerical_columns = ['cardio','age', 'height', 'weight', 'ap_hi', 'ap_lo']
-
-# Calculating correlation matrix
-correlation_matrix = df[numerical_columns].corr()
-
-# Plotting heatmap
-plt.figure(figsize=(6, 4))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", annot_kws={"size": 10})
-plt.title('Correlation Matrix Heatmap')
-plt.show()
-```
-
-
-    
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_28_0.png)
     
 
-
 **Exploring the Target Variable**
 
-
-```python
-#Checking the distribution of the target variable to understand class imbalance.
-
-plt.figure(figsize=(6, 4))
-sns.countplot(data=df, x='cardio')
-plt.title('Distribution of Cardiovascular Disease')
-plt.xlabel('Cardiovascular Disease (0: No, 1: Yes)')
-plt.ylabel('Count')
-plt.show()
-```
-
-
+# The distribution of the target variable to understand class imbalance.
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_30_0.png)
     
 
-
 The target variable 'cardio' appears to be balanced, with approximately equal representation of both classes (0 and 1).
 
-
-```python
-#Visualizing the relationship between the target variable and other features
-categorical_features = ['gender', 'cholesterol', 'gluc', 'smoke', 'alco', 'active']
-
-# Set up the matplotlib figure for a 2x3 grid
-fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(10, 6))  # Adjust size as needed
-
-# Flatten the axes array for easy iteration
-axes = axes.flatten()
-
-# Plotting bar plots for each categorical feature by Cardiovascular Disease
-for i, feature in enumerate(categorical_features):
-    sns.countplot(data=df, x=feature, hue='cardio', ax=axes[i])
-    axes[i].set_title(f'By {feature}')
-    axes[i].set_xlabel(feature)
-    axes[i].set_ylabel('Count')
-
-    # Optionally, you can show the legend only on the first subplot or last subplot
-    if i == 0:  # or i == len(categorical_features) - 1 for the last subplot
-        axes[i].legend(title='Cardio', labels=['No', 'Yes'], loc='best')
-    else:
-        axes[i].legend([],[], frameon=False)
-
-# Adjust layout to prevent overlap
-plt.tight_layout()
-
-# Display the plot
-plt.show()
-```
-
-
+# Visualizing the relationship between the target variable and other features
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_32_0.png)
     
 
-
-The factors analysed above, cannot be used in isolation to determine the risk of cardiovacular disease.
-
-#Feature Engineering
-
-
-First task is to convert age from days to years.
-
-
-```python
-# Convert age from days to years
-df['age_years'] = (df['age'] / 365.25).round().astype(int)
-
-# Categorize age in groups of 5
-def categorize_age_years(age_years):
-    if age_years < 40:
-        return 1 #Under 40
-    elif 40 <= age_years < 45:
-        return 2 #40-44
-    elif 45 <= age_years < 50:
-        return 3 #45-49
-    elif 50 <= age_years < 55:
-        return 4 #50-54
-    elif 55 <= age_years < 60:
-        return 5 #55-59
-    elif 60 <= age_years < 65:
-        return 6 #60-64
-    else:
-        return 7 #Over 65
-
-# Apply the function to categorize age_years
-df['age_category'] = df['age_years'].apply(categorize_age_years)
-
-# Display the distribution of the BMI categories
-df['age_category'].value_counts(normalize=True) * 100
-```
-
-
-
-
-    age_category
-    4    27.598571
-    5    22.967143
-    6    22.091429
-    2    13.704286
-    3    12.565714
-    1     0.677143
-    7     0.395714
-    Name: proportion, dtype: float64
-
-
-
-Next, is to create a new BMI column which is a better risk factor to use to determine the risk of cardiovascular disease.
-
-
-```python
-#creating a BMI column by dividing height/weight squared
-## Calculate BMI: BMI = weight (kg) / (height (m))^2
-df['BMI'] = (df['weight'] / ((df['height'] / 100) ** 2)).round()
-```
-
-Then categorize the BMI into underweight, normal, overweight, obese using codes 1,2,3,4 respectively
-
-
-```python
- #creating a BMI column by dividing height/weight squared
-## Calculate BMI: BMI = weight (kg) / (height (m))^2
-df['BMI'] = (df['weight'] / ((df['height'] / 100) ** 2)).round()
-
-# Categorize BMI according to WHO standards
-def categorize_bmi(bmi):
-    if bmi < 18.5:
-        return 1 #Underweight
-    elif 18.5 <= bmi < 25:
-        return 2 #Normal Weight
-    elif 25 <= bmi < 30:
-        return 3 #Overweight
-    else:
-        return 4 #Obese
-
-# Apply the function to categorize BMI
-df['BMI_Category'] = df['BMI'].apply(categorize_bmi)
-
-# Display the distribution of the BMI categories
-df['BMI_Category'].value_counts(normalize=True) * 100
-```
-
-
-
-
-    BMI_Category
-    3    39.037143
-    2    31.421429
-    4    28.612857
-    1     0.928571
-    Name: proportion, dtype: float64
-
-
-
-
-```python
- # Function to categorize blood pressure
-def categorize_blood_pressure(row):
-    if row['ap_hi'] < 120 and row['ap_lo'] < 80:
-        return 1 #Normal
-    elif 120 <= row['ap_hi'] <= 129 and row['ap_lo'] < 80:
-        return 2 #Elevated
-    elif 130 <= row['ap_hi'] <= 139 or 80 <= row['ap_lo'] <= 89:
-        return 3 #Hypertension Stage 1
-    elif row['ap_hi'] >= 140 or row['ap_lo'] >= 90:
-        return 4 #Hypertension Stage 2
-    elif row['ap_hi'] > 180 or row['ap_lo'] > 120:
-        return 5 #Hypertensive Crisis
-    else:
-        return 0 #Uncategorized
-
-# Apply the function to categorize blood pressure
-df['BP_Category'] = df.apply(categorize_blood_pressure, axis=1)
-
-# Display the distribution of the BP categories
-df['BP_Category'].value_counts(normalize=True) * 100
-```
-
-
-
-
-    BP_Category
-    3    57.048571
-    4    24.761429
-    1    13.725714
-    2     4.464286
-    Name: proportion, dtype: float64
-
-
-
-
-```python
-# Calculate pulse pressure
-df['pulse_pressure'] = df['ap_hi'] - df['ap_lo']
-
-# Print the first few rows to check the calculated pulse pressure
-print(df[['ap_hi', 'ap_lo', 'pulse_pressure']].head())
-
-# Assuming you have your data loaded into a DataFrame called df
-# Replace df with your DataFrame if it's named differently
-
-# Define a function to categorize pulse pressure
-def categorize_pulse_pressure(pulse_pressure):
-    if pulse_pressure <= 40:
-        return 1 # Normal
-    elif pulse_pressure <= 60:
-        return 2 # Elevated
-    else:
-        return 3 # High
-
-# Apply the categorization function to create a new column 'pulse_pressure_category'
-df['pulse_pressure_category'] = df['pulse_pressure'].apply(categorize_pulse_pressure)
-
-# Display the distribution of the pulse pressure categories
-df['pulse_pressure_category'].value_counts(normalize=True) * 100
-
-```
-
-       ap_hi  ap_lo  pulse_pressure
-    0    110     80              30
-    1    140     90              50
-    2    130     70              60
-    3    150    100              50
-    4    100     60              40
-    
-
-
-
-
-    pulse_pressure_category
-    1    60.924286
-    2    32.704286
-    3     6.371429
-    Name: proportion, dtype: float64
-
-
+# Feature Engineering
 
 ## **Summary of new feature categories**
 
@@ -1115,29 +336,6 @@ df['pulse_pressure_category'].value_counts(normalize=True) * 100
 2. Elevated
 3. High
 
-
-```python
-df.head()
-```
-
-
-
-
-
-  <div id="df-8d9604a7-b463-4c5e-ac3f-200147ef3bfe" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -1291,334 +489,19 @@ df.head()
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-8d9604a7-b463-4c5e-ac3f-200147ef3bfe button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-8d9604a7-b463-4c5e-ac3f-200147ef3bfe');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-2b551de4-cb19-43d5-813c-35cdd5612226">
-  <button class="colab-df-quickchart" onclick="quickchart('df-2b551de4-cb19-43d5-813c-35cdd5612226')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-2b551de4-cb19-43d5-813c-35cdd5612226 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-
-
-
-
-
-```python
-# checking correlation of features after creating BMI column and categorizing  BMI and BP levels.
-
-
-# Calculate correlation
-correlation_with_cardio = df[['id', 'age', 'gender', 'height', 'weight', 'ap_hi', 'ap_lo',
-                              'cholesterol', 'gluc', 'smoke', 'alco', 'active', 'age_years',
-                              'BMI', 'BMI_Category', 'BP_Category','pulse_pressure', 'cardio']].corr()['cardio'].sort_values(ascending=False)
-print("Positive values indicate a positive correlation, while negative values indicate a negative correlation.")
-print(correlation_with_cardio)
-
-```
-
-    Positive values indicate a positive correlation, while negative values indicate a negative correlation.
-    cardio            1.000000
-    BP_Category       0.348026
-    age               0.238159
-    age_years         0.237802
-    cholesterol       0.221147
-    BMI_Category      0.184858
-    weight            0.181660
-    BMI               0.165262
-    gluc              0.089307
-    ap_lo             0.065719
-    ap_hi             0.054475
-    gender            0.008109
-    id                0.003799
-    alco             -0.007330
-    height           -0.010821
-    smoke            -0.015486
-    pulse_pressure   -0.016550
-    active           -0.035653
-    Name: cardio, dtype: float64
-    
-
-
-```python
 # checking correlation using a heatmap
-
-# Calculate correlation
-correlation_matrix = df[['id', 'age', 'gender', 'height', 'weight', 'ap_hi', 'ap_lo',
-                        'cholesterol', 'gluc', 'smoke', 'alco', 'active', 'age_years',
-                        'BMI','pulse_pressure','cardio']].corr()
-
-# Plotting the heatmap
-plt.figure(figsize=(10, 6))
-sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap='coolwarm')
-plt.title('Correlation Heatmap between Cardio and Other Variables')
-plt.show()
-
-```
-
-
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_46_0.png)
     
-
-
-
-```python
 #relationship between age and BMI
-
-# Calculate the mean BMI for each age group
-mean_bmi_by_age = df.groupby('age_years')['BMI'].mean()
-
-# Plotting the relationship between age and mean BMI
-plt.figure(figsize=(8, 6))
-mean_bmi_by_age.plot(kind='line', marker='o', color='b')
-plt.title('Mean BMI by Age')
-plt.xlabel('Age (years)')
-plt.ylabel('Mean BMI')
-plt.grid(True)
-plt.show()
-
-```
-
-
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_47_0.png)
     
-
-
-
-```python
-
 # Define age intervals of 5 years
-age_intervals = pd.cut(df['age_years'], bins=range(30, 75, 5), right=False)
-
-# Calculate the mean BMI for each age interval
-mean_bmi_by_age_interval = df.groupby(age_intervals)['BMI'].mean()
-
-# Plotting the relationship between age intervals and mean BMI using a bar graph
-plt.figure(figsize=(8, 6))
-mean_bmi_by_age_interval.plot(kind='bar', color='skyblue')
-plt.title('Mean BMI by Age Intervals (5 years)')
-plt.xlabel('Age Intervals (years)')
-plt.ylabel('Mean BMI')
-plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
-plt.grid(axis='y')  # Show grid lines only on the y-axis
-plt.tight_layout()  # Adjust layout to prevent overlapping labels
-plt.show()
-
-
-```
-
-
-    
+  
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_48_0.png)
     
-
-
 This bar graph  may not be a true representation of the average BMI per age group due to non uniformity in the number of respondents in each age group.
-
-
-
-```python
-df.head()
-```
-
-
-
-
 
   <div id="df-9b9d0b56-787e-4c78-a2cc-119bfec193ad" class="colab-df-container">
     <div>
@@ -1782,335 +665,22 @@ df.head()
 </div>
     <div class="colab-df-buttons">
 
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-9b9d0b56-787e-4c78-a2cc-119bfec193ad')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-9b9d0b56-787e-4c78-a2cc-119bfec193ad button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-9b9d0b56-787e-4c78-a2cc-119bfec193ad');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-24f2ba22-3830-42dc-ad66-799e65dcd1c4">
-  <button class="colab-df-quickchart" onclick="quickchart('df-24f2ba22-3830-42dc-ad66-799e65dcd1c4')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-24f2ba22-3830-42dc-ad66-799e65dcd1c4 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-
-
-
-
-
-```python
-# Set the aesthetics for the plots
-sns.set(style="whitegrid")
-
-# Create a figure to host the plots
-fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
-
-# Category names
-age_categories = ['Under 40', '40-44', '45-49', '50-54', '55-59', '60-64', 'Over 65']
-bmi_categories = ['Underweight', 'Normal Weight', 'Overweight', 'Obese']
-bp_categories = ['Uncategorized', 'Normal', 'Elevated', 'Hypertension Stage 1', 'Hypertension Stage 2', 'Hypertensive Crisis']
-pulse_categories = ['Normal', 'Elevated', 'High']
-
-# Histogram of Age Groups
-sns.countplot(ax=axes[0, 0], x='age_category', data=df, palette='viridis')
-axes[0, 0].set_title('Distribution of Age Groups')
-axes[0, 0].set_xlabel('Age Group')
-axes[0, 0].set_ylabel('Count')
-axes[0, 0].tick_params(axis='x', rotation=45)
-axes[0, 0].set_xticklabels(age_categories, rotation=45)
-
-# Histogram of BMI Categories
-sns.countplot(ax=axes[0, 1], x='BMI_Category', data=df, palette='coolwarm')
-axes[0, 1].set_title('Distribution of BMI Categories')
-axes[0, 1].set_xlabel('BMI Category')
-axes[0, 1].set_ylabel('Count')
-axes[0, 1].set_xticklabels(bmi_categories, rotation=45)
-
-# Histogram of Blood Pressure Categories
-sns.countplot(ax=axes[1, 0], x='BP_Category', data=df, palette='magma')
-axes[1, 0].set_title('Distribution of Blood Pressure Categories')
-axes[1, 0].set_xlabel('Blood Pressure Category')
-axes[1, 0].set_ylabel('Count')
-axes[1, 0].tick_params(axis='x', rotation=45)
-axes[1, 0].set_xticklabels(bp_categories, rotation=45)
-
-# Bar Chart of Cardiovascular Disease Presence by Age Group
-sns.countplot(ax=axes[1, 1], x='age_category', hue='cardio', data=df, palette='pastel')
-axes[1, 1].set_title('Cardiovascular Disease by Age Group')
-axes[1, 1].set_xlabel('Age Group')
-axes[1, 1].set_ylabel('Count')
-axes[1, 1].legend(title='Cardio Disease')
-axes[1, 1].tick_params(axis='x', rotation=45)
-axes[1, 1].set_xticklabels(age_categories, rotation=45)
-
-# Adjust layout
-plt.tight_layout()
-plt.show()
-
-```
-
-
+# Add description
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_51_0.png)
     
-
 
 # **Removing outliers**
 
 Blood Pressure: We chose to limit systolic (ap_hi) and diastolic (ap_lo) blood pressure to reasonable adult ranges, such as systolic from 90 to 250 mmHg, and diastolic from 60 to 150 mmHg.\
 Height and Weight: Remove heights below 50 cm and above 250 cm.
 In the same way, filter out weights below 30 kg or above 200 kg as they are less likely to be accurate.
-
-
-```python
-# Define reasonable ranges for each feature
-valid_ap_hi_range = (50, 250)
-valid_ap_lo_range = (30, 180)
-valid_height_range = (50, 250)  # cm
-valid_weight_range = (30, 200)   # kg
-min_age_days = 18 * 365.4  # Minimum age in days
-
-# Apply filters to remove outliers
-filtered_data = df[
-    (df['ap_hi'].between(*valid_ap_hi_range)) &
-    (df['ap_lo'].between(*valid_ap_lo_range)) &
-    (df['height'].between(*valid_height_range)) &
-    (df['weight'].between(*valid_weight_range)) &
-    (df['age'] >= min_age_days)
-]
-
-# Compare the shape of the data before and after filtering to see how many rows were removed
-original_shape = df.shape
-filtered_shape = filtered_data.shape
-
-original_shape, filtered_shape
-```
-
-
-
-
-    ((70000, 20), (68772, 20))
-
-
-
-
-```python
-#Relationship between age and BMI after dropping outliers
-
-# Calculating the mean BMI for each age group
-mean_bmi_by_age = filtered_data.groupby('age_years')['BMI'].mean()
-# Plotting the relationship between age and mean BMI
-plt.figure(figsize=(8, 6))
-mean_bmi_by_age.plot(kind='line', marker='o', color='b')
-plt.title('Mean BMI by Age')
-plt.xlabel('Age (years)')
-plt.ylabel('Mean BMI')
-plt.grid(True)
-plt.show()
-```
-
-
-    
+  
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_55_0.png)
     
 
 
-Clustering & Segmentation
+## Clustering & Segmentation
 
 
 

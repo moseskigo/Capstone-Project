@@ -1,4 +1,5 @@
 # **Comprehensive Cardiovascular Disease Data Analysis and Application**
+![image](https://github.com/moseskigo/Capstone-Project/assets/128637199/b0d0b4aa-9783-49ab-ac00-740d83b97613)
 
 ## Team Composition
 * Moses Kigo
@@ -10,33 +11,16 @@
 ## Project Overview
 This project aims to leverage machine learning techniques to predict cardiovascular disease based on clinical and demographic data. By analyzing historical patient data, we intend to uncover risk factors, develop predictive models, and implement these models in a real-world health application.
 
-
 ## Background
 Cardiovascular diseases (CVDs) are a top cause of death globally, taking an estimated 17.9 million lives each year, according to the World Health Organization. Utilizing data science to predict cardiovascular disease can help in early diagnosis and potentially save lives through timely intervention.
-
 
 ## Data Description
 The dataset for this project comes from a public health database. It includes records for 70,000 patients with features such as age, gender, blood pressure, cholesterol level, and other medical history indicators. This comprehensive dataset provides a basis for developing robust predictive models.
 
-
 ## Objectives
-1. To identify the most significant risk factors for cardiovascular disease.
-2. To develop and compare several machine learning models based on their accuracy and efficiency.
-3. To implement a clustering model to segment the patient population by risk level.
-4. To integrate these models into a user-friendly health application that can provide real-time assessments.
-
-
-1. Key Risk Factors Identification: Use feature importance and exploratory data analysis to highlight significant predictors of CVD.
-2. Predictive Model Development: Construct an accurate model to assess the risk of CVD among individuals.
-3. Patient Segmentation: Efficiently segment patients based on risk factors to identify those at highest risk.
-
-
-1. A concise report detailing exploratory data analysis findings and key insights.
-2. An analysis of feature importance, emphasizing CVD risk factors.
-3. A validated predictive model for assessing CVD risk, complete with documentation and user guidance.
-4. A patient segmentation report, identifying and describing high-risk groups.
-5. Targeted recommendations for interventions aimed at the identified high-risk groups.
-6. A final presentation to stakeholders, summarizing findings, methodologies, and actionable recommendations.
+1. To identify the Key Risk Factors: Use feature importance and exploratory data analysis to highlight significant predictors of CVD.
+2. To  develop a Predictive Model: Construct an accurate model to assess the risk of CVD among individuals.
+3. Patient Segmentation: Develop a patient segmentation strategy to efficiently identify individuals with high-risk profiles by analyzing pertinent risk factors.
 
 ## Methodology 
 The project followed these steps:
@@ -47,7 +31,7 @@ The project followed these steps:
 5. **Clustering Analysis**: Use K-means to segment patients based on their risk profiles.
 6. **Deployment**: Outline the process for integrating models into a web application.
 
-**Data Acquisition Cleaning & Preparation**
+## Data Acquisition Cleaning & Preparation
 
 ```python
 # Loading Dataset
@@ -56,7 +40,6 @@ df = pd.read_csv(path,delimiter=';')
 #Display the first few rows
 df.head()
 ```
-
 
   <div id="df-ee276431-f7a8-4231-8d60-4e483537725f" class="colab-df-container">
     <div>
@@ -189,7 +172,7 @@ df.head()
     </button>
 
 
-# **Data description**
+## **Data description**
 
 There are 3 types of input features:
 
@@ -214,15 +197,17 @@ Features:
 | 11 | active | Physical activity | Subjective Feature | binary |
 | 12 | cardio | Presence or absence of cardiovascular disease | Target Variable | binary |
 
-**Data cleaning**
+### **Data cleaning**
 
 There are no missing values or duplicates in this dataset
 
-**Summary Statistics**
+There are no duplicated rows in this dataset
 
 ```python
 #concise summary of the dataset
 df.info()
+```
+### **Summary Statistics**
 ```
 
     <class 'pandas.core.frame.DataFrame'>
@@ -245,7 +230,6 @@ df.info()
      12  cardio       70000 non-null  int64  
     dtypes: float64(1), int64(12)
     memory usage: 6.9 MB
-
     
     Number of unique values for each categorical column:
     gender         2
@@ -256,12 +240,10 @@ df.info()
     active         2
     cardio         2
     dtype: int64
-    
 
-**Data Visualization**
+### **Data Visualisation**
 
 # The distribution of numerical variables using histograms
-
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_21_0.png)
     
@@ -302,7 +284,7 @@ The target variable 'cardio' appears to be balanced, with approximately equal re
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_32_0.png)
     
 
-# Feature Engineering
+### Feature Engineering
 
 ## **Summary of new feature categories**
 
@@ -663,7 +645,7 @@ This bar graph  may not be a true representation of the average BMI per age grou
 </div>
     <div class="colab-df-buttons">
 
-# Feature Distribution in Cluster
+### Feature Distribution in Cluster
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_51_0.png)
   
@@ -675,7 +657,7 @@ In the same way, filter out weights below 30 kg or above 200 kg as they are less
   
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_55_0.png)
     
-## Clustering & Segmentation
+### Clustering & Segmentation
 
 </style>
 <table border="1" class="dataframe">
@@ -836,7 +818,6 @@ In the same way, filter out weights below 30 kg or above 200 kg as they are less
 From the graph above the optimal number of clusters is 5.
 
 ## Title
-
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_64_0.png)
     
@@ -844,7 +825,6 @@ From the graph above the optimal number of clusters is 5.
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_65_0.png)
     
-
 **Interpretation**
 
 - **Cluster 0:** Highest prevalence of cardiovascular disease (75% of individuals have it).
@@ -856,14 +836,11 @@ From the graph above the optimal number of clusters is 5.
 # Characteristics of Clusters
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_67_0.png)
-    
-
 
 # Feature Distribution in Cluster
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_68_0.png)
     
-
 Cluster Summaries:
 
 - **Cluster 0 - The High-Risk Elderly:** This cluster is marked by the oldest average age and elevated mean values for both blood pressure and cholesterol. This group's health metrics suggest a higher prevalence of age-related cardiovascular risks, warranting close medical attention and potential intervention.
@@ -883,13 +860,12 @@ The cluster analysis highlights diverse health profiles within the patient popul
    
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_70_0.png)
     
-
 # Histograms for BMI and blood pressure by cluster
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_71_0.png)
     
 
-# Modelling
+## Modelling
 We used six models: 
 1. Linear Regression - Baseline model
 2. Logistic Regression
@@ -1252,27 +1228,22 @@ We used six models:
   </tbody>
 </table>
 
-
 # Visualisation for Rresult Comparisons
 ## Accuracy Comparison
 
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_79_0.png)
-    
 
 ## Confusion Matrix
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_80_0.png)
     
-
 ## ROC Comparisons
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_81_0.png)
     
-
 ## Precision Recall  Comparison
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_82_0.png)
-    
 
 ## Feature Importance Analysis
    

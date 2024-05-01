@@ -1280,7 +1280,7 @@ We then stacked the models to achieve a comprehensive predictive model taking ad
 # Conclusions
 1. **Ensemble methods** like Gradient Boosting showed promise in improving prediction accuracy compared to single models.
 2. **Feature engineering** significantly impacted model performance. Well-designed features like BMI categories captured data complexities for better predictions.
-3. **Gradient Boosting** and Logistic Regression emerged as top performers, balancing accuracy and interpretability, making them suitable for deployment.
+3. **XGBoosting** and Logistic Regression emerged as top performers, balancing accuracy and interpretability, making them suitable for deployment.
 4. **Hyperparameter tuning techniques** like Grid Search further enhanced model performance.
 5. **The Models** are ready for real-world applications like health apps, but require continuous monitoring and updates to adapt to new data and potentially integrate feedback from healthcare professionals.
 6. **Deployment considerations** include interpretability (Logistic Regression excels here), computational efficiency, and integration with existing healthcare systems.

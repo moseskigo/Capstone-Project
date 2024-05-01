@@ -1287,7 +1287,7 @@ We then stacked the models to achieve a comprehensive predictive model taking ad
 
 # Recommendations
 1. Include more potential predictors of cardiovascular disease, such as genetic information, detailed lifestyle information, and long-term health history. This could involve collaborations with medical researchers and clinicians.
-2. For models intended for clinical use, prioritize interpretability to ensure healthcare providers understand and trust the model's predictions. Techniques such as SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-agnostic Explanations) can help explain the predictions of complex models.
+2. For models intended for clinical use, prioritizing interpretability to ensure healthcare providers understand and trust the model's predictions. Techniques such as SHAP (SHapley Additive exPlanations) helped explain the predictions of this complex model.
 3. Continuously validate the model against new data and refine it based on feedback from real-world use. This involves setting up a pipeline for ongoing data collection, analysis, and model updating.
    
 # Limitations

@@ -843,7 +843,7 @@ From the graph above the optimal number of clusters is 5.
 ### **Interpretation**
 
 - **Cluster 0:** Highest prevalence of cardiovascular disease (75% of individuals have it).
-- **Cluster 1:**Lowest prevalence of cardiovascular disease (22%  have it).
+- **Cluster 1:** Lowest prevalence of cardiovascular disease (22%  have it).
 - **Cluster 2:** Second highest prevalence of cardiovascular disease (70%  have it).
 - **Cluster 3:** Second lowest prevalence of cardiovascular disease (34% have it).
 - **Cluster 4:** Mixed prevalence of cardiovascular disease (59% do not have it).

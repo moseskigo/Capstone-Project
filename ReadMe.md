@@ -40,7 +40,6 @@ df = pd.read_csv(path,delimiter=';')
 #Display the first few rows
 df.head()
 ```
-
   <div id="df-ee276431-f7a8-4231-8d60-4e483537725f" class="colab-df-container">
     <div>
 <style scoped>
@@ -241,54 +240,70 @@ df.info()
     cardio         2
     dtype: int64
 
-### **Data Visualisation**
+```
+## **Data Visualisation**
 
-# The distribution of numerical variables using histograms
+### The distribution of numerical variables using histograms
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_21_0.png)
+
+**Observations from Histograms:**
+* Age Distribution: Appears to be fairly normally distributed with a slight skew towards older ages.
+* Height Distribution: Shows a relatively normal distribution, but with a slight skew towards taller heights.
+* Weight Distribution: Also normally distributed with a heavier tail towards higher weights, indicating some skewness.
     
-# Box plot plotting to check on outliers
+### Box plot plotting to check on outliers
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_22_0.png)
 
-# Plotting scatter plots for each pair of numerical columns
+**Observations from Box Plots:**
+* Age: No significant outliers, indicating that the age data is well-distributed.
+* Height: A few outliers on the lower and upper ends. Extreme values might represent data entry errors or very rare cases.
+* Weight: Outliers are present on the higher side, which might be cases of obesity but could also include data errors.
+
+### Plotting scatter plots for each pair of numerical columns
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_23_0.png)
     
-# The distribution of categorical features
+### The distribution of categorical features
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_24_0.png)
     
-# The relationship between categorical and numerical variables using  violin plots.
+### The relationship between categorical and numerical variables using  violin plots.
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_25_0.png)
     
-**Correlation Analysis**
+## **Correlation Analysis**
 
-# Correlation Matrix Heatmap
+### Correlation Matrix Heatmap
 
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_28_0.png)
-    
 
-**Exploring the Target Variable**
+**Key Points from the Correlation Matrix:**
+- Cardiovascular Disease (cardio) shows moderate positive correlations with age, weight, ap_hi (systolic blood pressure), and ap_lo (diastolic blood pressure), indicating that these factors might be associated with a higher risk of cardiovascular disease.
+- Age and cholesterol levels also have a notable correlation with blood pressure, suggesting that as patients age or have higher cholesterol, their blood pressure tends to be higher.
+- Active Lifestyle (active) has a small negative correlation with cardiovascular disease, suggesting a possible protective effect, though the correlation is weak.
+- Smoking (smoke) and alcohol (alco) have very low correlations with cardiovascular disease in this dataset, indicating that they might not be strong predictors in this context or that other factors like blood pressure and cholesterol overshadow their effects.
 
-# The distribution of the target variable to understand class imbalance.
+## **Exploring the Target Variable**
+
+### The distribution of the target variable to understand class imbalance.
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_30_0.png)
     
 
 The target variable 'cardio' appears to be balanced, with approximately equal representation of both classes (0 and 1).
 
-# Visualizing the relationship between the target variable and other features
+### Visualizing the relationship between the target variable and other features
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_32_0.png)
     
 
-### Feature Engineering
+## Feature Engineering
 
-## **Summary of new feature categories**
+### **Summary of new feature categories**
 
-- Age Categories
+**- Age Categories**
 1. Under 40
 2. Age 40-44
 3. Age 45-49
@@ -297,13 +312,13 @@ The target variable 'cardio' appears to be balanced, with approximately equal re
 6. Age 60-64
 7. Over 65
 
-- BMI Categories
+**- BMI Categories**
 1. Underweight
 2. Normal Weight
 3. Overweight
 4. Obese
 
-- Blood Pressure Categories
+**- Blood Pressure Categories**
 0. Uncategorized
 1. Normal
 2. Elevated
@@ -311,7 +326,7 @@ The target variable 'cardio' appears to be balanced, with approximately equal re
 4. Hypertension Stage 2
 5. Hypertensive Crisis
 
-- Pulse Pressure Categories
+**- Pulse Pressure Categories**
 1. Normal
 2. Elevated
 3. High
@@ -469,15 +484,15 @@ The target variable 'cardio' appears to be balanced, with approximately equal re
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
-# checking correlation using a heatmap
+### checking correlation using a heatmap
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_46_0.png)
     
-#relationship between age and BMI
+### relationship between age and BMI
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_47_0.png)
     
-# Define age intervals of 5 years
+### Define age intervals of 5 years
   
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_48_0.png)
     
@@ -645,11 +660,11 @@ This bar graph  may not be a true representation of the average BMI per age grou
 </div>
     <div class="colab-df-buttons">
 
-### Feature Distribution in Cluster
+## Feature Distribution in Cluster
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_51_0.png)
   
-# **Removing outliers**
+### **Removing outliers**
 
 Blood Pressure: We chose to limit systolic (ap_hi) and diastolic (ap_lo) blood pressure to reasonable adult ranges, such as systolic from 90 to 250 mmHg, and diastolic from 60 to 150 mmHg.\
 Height and Weight: Remove heights below 50 cm and above 250 cm.
@@ -807,25 +822,25 @@ In the same way, filter out weights below 30 kg or above 200 kg as they are less
 </div>
     <div class="colab-df-buttons">
 
- ## Correlation Heatmap
+ ### Correlation Heatmap
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_60_0.png)
     
-## Silhouette Score for Optimal Number of Clusters
+### Silhouette Score for Optimal Number of Clusters
 
 ![WhatsApp Image 2024-04-21 at 21 22 57_dc02fc86](https://github.com/moseskigo/Capstone-Project/assets/128637199/87eaf461-53b8-4fb8-91f8-964051cae342)
 
 From the graph above the optimal number of clusters is 5.
 
-## Title
+## Distribution of Data Points in Clusters
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_64_0.png)
     
-# Distribution of Data Points in Clusters'
+## Distribution of Data Points in Clusters'
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_65_0.png)
     
-**Interpretation**
+### **Interpretation**
 
 - **Cluster 0:** Highest prevalence of cardiovascular disease (75% of individuals have it).
 - **Cluster 1:**Lowest prevalence of cardiovascular disease (22%  have it).
@@ -833,11 +848,11 @@ From the graph above the optimal number of clusters is 5.
 - **Cluster 3:** Second lowest prevalence of cardiovascular disease (34% have it).
 - **Cluster 4:** Mixed prevalence of cardiovascular disease (59% do not have it).
 
-# Characteristics of Clusters
+## Characteristics of Clusters
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_67_0.png)
 
-# Feature Distribution in Cluster
+## Feature Distribution in Cluster
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_68_0.png)
     
@@ -860,10 +875,9 @@ The cluster analysis highlights diverse health profiles within the patient popul
    
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_70_0.png)
     
-# Histograms for BMI and blood pressure by cluster
+## Histograms for BMI and blood pressure by cluster
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_71_0.png)
-    
 
 ## Modelling
 We used six models: 
@@ -874,12 +888,17 @@ We used six models:
 5. Decision Tree Classifier
 6. XG Boost Classifier 
 
-    Linear Regression Model Performance:
-    Accuracy: 0.7133406034169393
-    ROC AUC Score: 0.7763864270613108
-    Recall: 0.6443636363636364
-    Precision: 0.7473009446693657
-    Root Mean Squared Error (RMSE): 0.44255496716948906
+    **Linear Regression Model Performance:**
+   
+    **Accuracy: 0.7133406034169393**
+   
+    **ROC AUC Score: 0.7763864270613108**
+   
+    **Recall: 0.6443636363636364**
+   
+    **Precision: 0.7473009446693657**
+   
+    **Root Mean Squared Error (RMSE): 0.44255496716948906**
        
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_76_1.png)
     
@@ -1228,7 +1247,7 @@ We used six models:
   </tbody>
 </table>
 
-# Visualisation for Rresult Comparisons
+# Visualisation for Result Comparisons
 ## Accuracy Comparison
 
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_79_0.png)
@@ -1251,9 +1270,35 @@ We used six models:
     
 We then stacked the models to achieve a comprehensive predictive model taking advantage of the benefit of all the classifier models
 
-## Deployment of clustering and predictive models using Joblib
-# Conclusions
-# Recommendations
-# Limitations
-# Future Works
+## Feature Impact Analysis
+![image](https://github.com/moseskigo/Capstone-Project/assets/128637199/d39a5610-7c66-463b-b011-064ae7322a4a)
 
+![image](https://github.com/moseskigo/Capstone-Project/assets/128637199/4b850498-4ab6-48b3-9ed4-a454b9c92ed1)
+
+![image](https://github.com/moseskigo/Capstone-Project/assets/128637199/e0a308a8-3039-4412-820f-11a5db942d72)
+
+# Conclusions
+1. **Ensemble methods** like Gradient Boosting showed promise in improving prediction accuracy compared to single models.
+2. **Feature engineering** significantly impacted model performance. Well-designed features like BMI categories captured data complexities for better predictions.
+3. **Gradient Boosting** and Logistic Regression emerged as top performers, balancing accuracy and interpretability, making them suitable for deployment.
+4. **Hyperparameter tuning techniques** like Grid Search further enhanced model performance.
+5. **The Models** are ready for real-world applications like health apps, but require continuous monitoring and updates to adapt to new data and potentially integrate feedback from healthcare professionals.
+6. **Deployment considerations** include interpretability (Logistic Regression excels here), computational efficiency, and integration with existing healthcare systems.
+
+# Recommendations
+1. Include more potential predictors of cardiovascular disease, such as genetic information, detailed lifestyle information, and long-term health history. This could involve collaborations with medical researchers and clinicians.
+2. For models intended for clinical use, prioritize interpretability to ensure healthcare providers understand and trust the model's predictions. Techniques such as SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-agnostic Explanations) can help explain the predictions of complex models.
+3. Continuously validate the model against new data and refine it based on feedback from real-world use. This involves setting up a pipeline for ongoing data collection, analysis, and model updating.
+   
+# Limitations
+1. **Data Quality and Representativeness:** Lack of diversity in data (ethnicity, age, socioeconomic status, geographic locations) limits generalizability.
+2. **Feature Limitations:** Missing relevant predictors (genetic factors, detailed dietary habits, mental health) affecting cardiovascular health.
+3. **Model Bias and Fairness:** Risk of encoding bias from training data, leading to unfair predictions across demographic groups.
+4. **Interpretability vs. Accuracy**: Trade-off between accuracy and interpretability; complex models offer higher accuracy but obscure decision-making, crucial in medical contexts.
+5. **Overfitting**: Models may fit training data too closely, performing well on seen data but poorly on unseen data.
+
+# Future Works
+Future improvements lie in:
+1. Including data from wearable health devices for more personalized insights.
+2. Exploring advanced techniques like deep learning for potentially better prediction.
+3. Implementing feedback loops to allow models to continuously learn and adapt.

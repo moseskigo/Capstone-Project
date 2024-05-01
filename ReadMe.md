@@ -1280,7 +1280,7 @@ We then stacked the models to achieve a comprehensive predictive model taking ad
 # Model Deployment
 1. Using joblib to pickle the scaler, clustering and predictive models, and exporting a requirements file for future the user facing app.
 2. Streamlit to develop the interactive User Interface and preocess the results of clustering, prediction, and offer insightful recommendations to uses of the system developed.
-
+The image below shows one of the results of the proposed applications featuring a pleasant on-brand user interface.
 ![Screenshot 2024-05-01 234425](https://github.com/moseskigo/Capstone-Project/assets/143738914/2394aaad-7996-413f-b579-2d93d25d0e2a)
 
 

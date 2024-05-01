@@ -1277,6 +1277,13 @@ We then stacked the models to achieve a comprehensive predictive model taking ad
 
 ![image](https://github.com/moseskigo/Capstone-Project/assets/128637199/e0a308a8-3039-4412-820f-11a5db942d72)
 
+# Model Deployment
+1. Using joblib to pickle the scaler, clustering and predictive models, and exporting a requirements file for future the user facing app.
+2. Streamlit to develop the interactive User Interface and preocess the results of clustering, prediction, and offer insightful recommendations to uses of the system developed.
+
+![Screenshot 2024-05-01 234425](https://github.com/moseskigo/Capstone-Project/assets/143738914/2394aaad-7996-413f-b579-2d93d25d0e2a)
+
+
 # Conclusions
 1. **Ensemble methods** like Gradient Boosting showed promise in improving prediction accuracy compared to single models.
 2. **Feature engineering** significantly impacted model performance. Well-designed features like BMI categories captured data complexities for better predictions.

@@ -2,11 +2,13 @@
 ![image](https://github.com/moseskigo/Capstone-Project/assets/128637199/b0d0b4aa-9783-49ab-ac00-740d83b97613)
 
 ## Team Composition
-* Moses Kigo
-* Josephine Wanjiru
-* Eunita Nyengo
-* Erick Lekishon
-* Chepkemoi Chepkemoi
+| Names             | Contact                              | Profile                              |
+|-------------------|--------------------------------------|--------------------------------------|
+| Moses Kigo        | 📧 [moseskigo@gmail.com](mailto:moseskigo@gmail.com) | 🔗 [moseskigo](https://github.com/moseskigo) |
+| Josephine Wanjiru | 📧 [josephinewanjiru28@gmail.com](mailto:josephinewanjiru28@gmail.com) | 🔗 [JosephineWanjiru7](https://github.com/JosephineWanjiru7) |
+| Eunita Nyengo     | 📧 [eutisha1@gmail.com](mailto:eutisha1@gmail.com) | 🔗 [NyarKolusi](https://github.com/NyarKolusi) |
+| Erick Lekishon    | 📧 [ericlemiso@gmail.com](mailto:ericlemiso@gmail.com) | 🔗 [kiranja110](https://github.com/kiranja110) |
+| Chepkemoi Chepkemoi | 📧 [chepkemoi465@gmail.com](mailto:chepkemoi465@gmail.com) | 🔗 [Mercychepchep](https://github.com/Mercychepchep) |
 
 ## Project Overview
 This project aims to leverage machine learning techniques to predict cardiovascular disease based on clinical and demographic data. By analyzing historical patient data, we intend to uncover risk factors, develop predictive models, and implement these models in a real-world health application.

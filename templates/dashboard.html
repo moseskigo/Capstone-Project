@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.age }}-year-old {{ profile['name'] }}!</h1>
+    <img src="{{ url_for('static', filename=profile['image']) }}" alt="{{ profile['name'] }}">
+    <h2>{{ profile['name'] }}</h2>
+    <p>{{ profile['description'] }}</p>
+    <h3>Health Tips:</h3>
+    <ul>
+        {% for tip in profile['tips'] %}
+            <li>{{ tip }}</li>
+        {% endfor %}
+    </ul>
+    <p>Your BMI is: {{ user.bmi }}</p>
+    <p>Your Pulse Pressure is: {{ user.pulse_pressure }}</p>
+    <p>Your Risk Level is: {{ user.risk_level }}</p>
+</body>
+</html>

@@ -2,6 +2,5 @@ streamlit
 numpy
 pandas
 scikit-Learn==1.2.2
-sklearn==1.2.2
 xgboost
 joblib

@@ -1,5 +1,5 @@
 numpy
 pandas
-scikit-Learn==1.3.0
+scikit-Learn==1.2.2
 xgboost
 joblib

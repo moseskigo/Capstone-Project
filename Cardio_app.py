@@ -15,6 +15,7 @@ def get_base64_encoded_image(image_path):
 # Base64 image string for background
 background_image = get_base64_encoded_image('images/background.jpg')
 
+
 # Set page config with an appropriate icon (e.g., a heart)
 st.set_page_config(
     page_title="Cardiovascular Risk Checker",
@@ -23,7 +24,7 @@ st.set_page_config(
     page_icon="❤"
 )
 
-# Embedding the CSS to set the background image
+# Embedding the CSS to set the background image and style the text
 st.markdown(
     f"""
     <style>
@@ -33,6 +34,7 @@ st.markdown(
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
+        color: white !important; /* Force text color to be white */
     }}
     </style>
     """, unsafe_allow_html=True

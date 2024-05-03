@@ -5,6 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBClassifier
 import sklearn.metrics
 import base64
+sklearn.metrics.pairwise import euclidean_distances
 
 # Function to get base64 string for an image
 def get_base64_encoded_image(image_path):

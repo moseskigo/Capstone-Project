@@ -3,5 +3,4 @@ pandas
 scikit-Learn==1.2.2
 xgboost
 joblib
-sklearn.metrics
 base64

@@ -4,3 +4,10 @@ pandas
 scikit-Learn==1.2.2
 xgboost
 joblib
+import streamlit as st
+import numpy as np
+import joblib
+from sklearn.preprocessing import LabelEncoder
+from xgboost import XGBClassifier
+import sklearn.metrics
+import base64

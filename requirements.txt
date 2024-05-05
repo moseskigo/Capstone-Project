@@ -207,7 +207,6 @@ python-dateutil
 python-json-logger 
 python-slugify==8.0.4
 pytz 
-pywin32==305.1
 pywinpty 
 PyYAML 
 pyzmq 

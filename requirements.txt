@@ -137,7 +137,6 @@ matplotlib
 matplotlib-inline 
 mdurl==0.1.2
 mistune 
-mkl-service==2.4.0
 multidict 
 munkres==1.1.4
 nbclassic 

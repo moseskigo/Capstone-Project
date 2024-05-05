@@ -81,7 +81,6 @@ googleapis-common-protos
 graphviz==0.20.3
 greenlet 
 grpcio 
-h5py==2.10.0
 holidays 
 idna 
 imbalanced-learn 

@@ -61,7 +61,6 @@ et-xmlfile==1.1.0
 exceptiongroup 
 executing 
 fastjsonschema 
-fbprophet 
 folium 
 fonttools 
 frozenlist 

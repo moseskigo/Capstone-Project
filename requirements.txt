@@ -200,7 +200,6 @@ pyreadline==2.1
 pyrsistent 
 PySocks 
 pyspark 
-pystan==2.19.1.1
 python-dateutil 
 python-json-logger 
 python-slugify==8.0.4

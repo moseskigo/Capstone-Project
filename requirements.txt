@@ -250,9 +250,9 @@ tabulate==0.9.0
 tenacity 
 tensorboard==2.3.0
 tensorboard-plugin-wit==1.7.0
-tensorflow==2.3.1
-tensorflow-estimator==2.3.0
-tensorflow-io-gcs-filesystem==0.31.0
+tensorflow
+tensorflow-estimator
+tensorflow-io-gcs-filesystem
 termcolor==1.1.0
 terminado 
 testpath 

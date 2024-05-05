@@ -170,7 +170,7 @@ if nav_choice == "Home":
 
             with col1:
                 st.subheader("Health Profile")
-                st.image(cluster_info['image'], caption=cluster_info['name'], width=300)
+                st.image(cluster_info['image'], caption=cluster_info['name'], width=500)
                 st.write(cluster_info['description'])
                 st.write("Here are some health tips based on your health profile:")
                 for tip in cluster_info['tips']:

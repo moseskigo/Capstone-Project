@@ -27,28 +27,21 @@ st.set_page_config(
 st.markdown(
     f"""
     <style>
-    [data-testid="stAppViewContainer"] > .main {{
-        background-image: url("data:image/jpeg;base64,{background_image}");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        color: white !important; /* Force text color to be white */
+    /* Styling the sidebar (navigation bar) */
+    [data-testid="stSidebar"] > div:first-child {{
+        padding-top: 10px; /* Reduce the padding at the top */
     }}
 
+    /* Reduce the size of the text in the sidebar */
+    [data-testid="stSidebar"] .css-1d391kg, [data-testid="stSidebar"] h1 {{
+        font-size: 16px !important; /* Adjust the font size */
+    }}
+
+    /* Adjust the sidebar width */
+    [data-testid="stSidebar"] {{
+        width: 200px !important; /* Set a custom width for the sidebar */
+    }}
     
-    /* Media query to ensure responsiveness for smaller screens */
-    @media screen and (max-width: 768px) {{
-        .health-risk-column, .prediction-column {{
-            width: 100% !important; /* Force both columns to take full width on smaller screens */
-            margin-bottom: 20px; /* Add some spacing between the two stacked columns */
-        }}
-        .health-risk-column img {{
-            width: 100% !important; /* Ensure image is responsive and takes full width on smaller screens */
-            height: auto; /* Maintain image aspect ratio */
-        }}
-    }}
-
     /* General column and image styling */
     .health-risk-column, .prediction-column {{
         padding: 20px;
@@ -58,6 +51,17 @@ st.markdown(
         max-width: 100%; /* Ensure image is responsive */
         margin-bottom: 15px; /* Add some space below the image */
     }}
+
+    /* Adjustments to main content for better spacing and layout */
+    [data-testid="stAppViewContainer"] > .main {{
+        background-image: url("data:image/jpeg;base64,{background_image}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: white !important; /* Force text color to be white */
+    }}
+    
     </style>
 
     <!-- Disclaimer box -->

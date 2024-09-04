@@ -167,8 +167,8 @@ if nav_choice == "Home":
         height = st.number_input("Enter your height in centimeters", min_value=50.0, max_value=250.0, step=0.1, value=175.0, help="Hover over the input field for help")
 
     with col2:
-        systolic_bp = st.number_input("Systolic Blood Pressure (mmHg)", min_value=40, max_value=250, step=1, value=120, help="Hover over the input field for help")
-        diastolic_bp = st.number_input("Diastolic Blood Pressure (mmHg)", min_value=40, max_value=150, step=1, value=80, help="Hover over the input field for help")
+        systolic_bp = st.number_input("Systolic Blood Pressure (mmHg)", min_value=40, max_value=250, step=1, value=110, help="Hover over the input field for help")
+        diastolic_bp = st.number_input("Diastolic Blood Pressure (mmHg)", min_value=40, max_value=150, step=1, value=70, help="Hover over the input field for help")
         cholesterol = st.selectbox("Cholesterol Level", options=[1, 2, 3], format_func=lambda x: {1: "Normal", 2: "Above Normal", 3: "Well Above Normal"}[x], help="Hover over the input field for help")
         gluc = st.selectbox("Glucose Level", options=[1, 2, 3], format_func=lambda x: {1: "Normal", 2: "Above Normal", 3: "Well Above Normal"}[x], help="Hover over the input field for help")
 

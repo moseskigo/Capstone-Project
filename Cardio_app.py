@@ -35,8 +35,38 @@ st.markdown(
         background-attachment: fixed;
         color: white !important; /* Force text color to be white */
     }}
+
+    
+    /* Media query to ensure responsiveness for smaller screens */
+    @media screen and (max-width: 768px) {{
+        .health-risk-column, .prediction-column {{
+            width: 100% !important; /* Force both columns to take full width on smaller screens */
+            margin-bottom: 20px; /* Add some spacing between the two stacked columns */
+        }}
+        .health-risk-column img {{
+            width: 100% !important; /* Ensure image is responsive and takes full width on smaller screens */
+            height: auto; /* Maintain image aspect ratio */
+        }}
+    }}
+
+    /* General column and image styling */
+    .health-risk-column, .prediction-column {{
+        padding: 20px;
+    }}
+    
+    .health-risk-column img {{
+        max-width: 100%; /* Ensure image is responsive */
+        margin-bottom: 15px; /* Add some space below the image */
+    }}
     </style>
-    """, unsafe_allow_html=True
+
+    <!-- Disclaimer box -->
+    <div style='background-color: rgba(248, 215, 218, 0.8); padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #f5c6cb; width: 100%; max-width: 800px;'>
+        <h4 style='color: black;'>Disclaimer</h4>
+        <p style='color: black; text-align: justify;'>This tool is a student data science project and is <strong>not</strong> a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+    </div>
+    """,
+    unsafe_allow_html=True
 )
 
 # Navigation Bar
@@ -46,7 +76,8 @@ nav_choice = st.sidebar.radio("Go to", ["Home", "About", "The Team"])
 if nav_choice == "Home":
     st.title("Welcome to the Cardiovascular Risk Checker")
     st.write("This tool helps you assess your health risk and provides personalized health tips based on your profile.")
-    
+    st.write("Please enter your information in the fields on the left and click 'Check Profile' to get started.")
+
     # Load the models and scaler
     try:
         clustering_model = joblib.load('models/patient_clustering_model.pkl')
@@ -169,27 +200,39 @@ if nav_choice == "Home":
             col1, col2 = st.columns(2)
 
             with col1:
-                st.subheader("Health Profile")
-                st.image(cluster_info['image'], caption=cluster_info['name'], width=500)
+                st.markdown("<div class='prediction-column'>", unsafe_allow_html=True)
+                st.subheader("Health Risk Prediction")
+                health_risk_messages = {0: "Your health risk is low. Keep up the good work!", 
+                                        1: "Your health risk is moderate. It's important to take proactive steps to improve your health.", 
+                                        2: "Your health risk is high. It's crucial to take immediate action to improve your health."}
+                st.write(health_risk_messages.get(health_risk_prediction[0], "Risk level unknown."))
+                
+                # Display categorized results
+                st.write(f"Your BMI category is: {bmi_category}, indicating {category_descriptions[bmi_category]}.")
+                st.write(f"Your Blood Pressure Category is: {bp_category}, indicating {bp_description}.")
+                st.write(f"Your Pulse Pressure Category is: {pulse_pressure_category}, indicating {pulse_pressure_description}.")
+                st.markdown("</div>", unsafe_allow_html=True)
+
+            with col2:
+                st.markdown("<div class='health-risk-column'>", unsafe_allow_html=True)
+                st.subheader("Health Risk Profile")
+                # Display cluster information in this column
+                st.image(cluster_info['image'], caption=cluster_info['name'], use_column_width=True)
                 st.write(cluster_info['description'])
                 st.write("Here are some health tips based on your health profile:")
                 for tip in cluster_info['tips']:
                     st.write(f"- {tip}")
+                st.markdown("</div>", unsafe_allow_html=True)
 
-            with col2:
-                st.subheader("Health Risk Prediction")
-                health_risk_messages = {0: "Your health risk is low. Keep up the good work!", 1: "Your health risk is moderate. It's important to take proactive steps to improve your health.", 2: "Your health risk is high. It's crucial to take immediate action to improve your health."}
-                st.write(health_risk_messages.get(health_risk_prediction[0], "Risk level unknown."))
-                st.write(f"Your BMI category is: {bmi_category}, indicating {category_descriptions[bmi_category]}.")
-                st.write(f"Your Blood Pressure Category is: {bp_category}, indicating {bp_description}.")
-                st.write(f"Your Pulse Pressure Category is: {pulse_pressure_category}, indicating {pulse_pressure_description}.")
+
 
         except Exception as e:
             st.error(f"An error occurred while processing your request: {e}")
 
 elif nav_choice == "About":
     st.title("About the App")
-    st.write("This app is designed to help users assess their health risk and receive personalized health tips based on their profile. Here's what the app can currently do:")
+    st.write("This app is designed to help users assess their health risk and receive personalized health tips")
+    st.write("based on their profile. Here's what the app can currently do:")
     st.write("- Accept user input for age, weight, height, blood pressure, cholesterol, and glucose levels.")
     st.write("- Categorize input data and provide feedback on BMI, blood pressure, and pulse pressure.")
     st.write("- Predict the user's health risk and cluster based on machine learning models.")

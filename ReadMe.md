@@ -490,7 +490,7 @@ The target variable 'cardio' appears to be balanced, with approximately equal re
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_46_0.png)
     
-### relationship between age and BMI
+### Relationship between age and BMI
     
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_47_0.png)
     
@@ -873,7 +873,7 @@ Cluster Summaries:
 **Conclusions:**\
 The cluster analysis highlights diverse health profiles within the patient population, identifying both high-risk groups and those with better-managed health parameters. The insights provided by the clustering enable targeted healthcare strategies to improve patient outcomes. For high-risk clusters, especially Cluster 0 and Cluster 2, heightened medical supervision is advised. In contrast, Clusters 1 and 4 can continue preventive care and regular health monitoring. Cluster 3's juxtaposition of youth and elevated BMI/BP suggests prioritizing preventive care to mitigate the risk of future health issues.
 
-## relationship between cardiovascular disease and BMI category,BP category,pulse pressure, age in years
+## Relationship between cardiovascular disease and BMI category,BP category,pulse pressure, age in years
    
 ![png](Capstone_Project_21042024_files/Capstone_Project_21042024_70_0.png)
     

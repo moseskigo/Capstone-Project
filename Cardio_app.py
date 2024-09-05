@@ -14,6 +14,15 @@ def get_base64_encoded_image(image_path):
 # Base64 image string for background
 background_image = get_base64_encoded_image('images/background.jpg')
 
+
+# Set page config with an appropriate icon
+st.set_page_config(
+    page_title="Cardiovascular Risk Checker",
+    layout="wide",  # Change layout to wide
+    page_icon="💓"
+)
+
+
 # Embedding the CSS to style the tabs and the background
 st.markdown(
     f"""

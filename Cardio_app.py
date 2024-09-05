@@ -14,45 +14,11 @@ def get_base64_encoded_image(image_path):
 # Base64 image string for background
 background_image = get_base64_encoded_image('images/background.jpg')
 
-
-# Set page config with an appropriate icon (e.g., a heart)
-st.set_page_config(
-    page_title="Cardiovascular Risk Checker",
-    layout="wide",  # Change layout to wide
-    initial_sidebar_state="expanded",  # Expand sidebar by default
-    page_icon="❤"
-)
-
-# Embedding the CSS to set the background image and style the text
+# Embedding the CSS to style the tabs and the background
 st.markdown(
     f"""
     <style>
-    /* Styling the sidebar (navigation bar) */
-    [data-testid="stSidebar"] > div:first-child {{
-        padding-top: 10px; /* Reduce the padding at the top */
-    }}
-
-    /* Reduce the size of the text in the sidebar */
-    [data-testid="stSidebar"] .css-1d391kg, [data-testid="stSidebar"] h1 {{
-        font-size: 16px !important; /* Adjust the font size */
-    }}
-
-    /* Adjust the sidebar width */
-    [data-testid="stSidebar"] {{
-        width: 200px !important; /* Set a custom width for the sidebar */
-    }}
-    
-    /* General column and image styling */
-    .health-risk-column, .prediction-column {{
-        padding: 20px;
-    }}
-    
-    .health-risk-column img {{
-        max-width: 100%; /* Ensure image is responsive */
-        margin-bottom: 15px; /* Add some space below the image */
-    }}
-
-    /* Adjustments to main content for better spacing and layout */
+    /* General styling for the background */
     [data-testid="stAppViewContainer"] > .main {{
         background-image: url("data:image/jpeg;base64,{background_image}");
         background-size: cover;
@@ -61,23 +27,81 @@ st.markdown(
         background-attachment: fixed;
         color: white !important; /* Force text color to be white */
     }}
-    
+
+    /* Remove padding around the tabs container */
+    .stTabs {{
+        margin-top: -5px !important; /* Adjust this value based on how much the tabs are pushed down */
+    }}
+
+    /* Custom styling for tabs */
+    .stTabs [role="tablist"] > div {{
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 1000px !important;
+        font-weight: bold !important;
+        color: #333 !important; /* Default text color */
+        background-color: rgba(240, 240, 240, 0.08) !important; /* Make background more transparent */
+        border: 2px solid rgba(204, 204, 204, 0.08); /* Make border more transparent */
+        margin-right: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        width: 70px;  /* Increase the tab width */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color */
+        z-index: 1;  /* Ensure the tab stays on top */
+    }}
+
+    /* Hover effect for tabs */
+    .stTabs [role="tablist"] > div:hover {{
+        background-color: rgba(230, 230, 230, 0.8) !important;
+    }}
+
+    /* Active tab styling */
+    .stTabs [role="tablist"] > div[aria-selected="true"] {{
+        background-color: rgba(220, 220, 220, 0.9) !important; /* Slightly transparent background */
+        color: black !important; /* Change text color to black when active */
+        border-color: #888;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
+        z-index: 2; /* Ensure the active tab is on top */
+        position: relative;
+    }}
+
+    /* Disclaimer box styling */
+    .disclaimer-box {{
+        background-color: rgba(248, 215, 218, 0.8);
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid #f5c6cb;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+        text-align: left;
+    }}
+
+    .disclaimer-box h4 {{
+        color: black;
+        margin-bottom: 10px;
+    }}
+
+    .disclaimer-box p {{
+        color: black;
+        text-align: justify;
+    }}
     </style>
 
     <!-- Disclaimer box -->
-    <div style='background-color: rgba(248, 215, 218, 0.8); padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #f5c6cb; width: 100%; max-width: 800px;'>
-        <h4 style='color: black;'>Disclaimer</h4>
-        <p style='color: black; text-align: justify;'>This tool is a student data science project and is <strong>not</strong> a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+    <div class='disclaimer-box'>
+        <h4>Disclaimer</h4>
+        <p>This tool is a student data science project and is <strong>not</strong> a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# Navigation Bar
-st.sidebar.title("Navigation")
-nav_choice = st.sidebar.radio("Go to", ["Home", "About", "The Team"])
+# Create navigation tabs
+tabs = st.tabs(["🏠 HOME", "📄 ABOUT", "👥 TEAM"])
 
-if nav_choice == "Home":
+with tabs[0]:
     st.title("Welcome to the Cardiovascular Risk Checker")
     st.write("This tool helps you assess your health risk and provides personalized health tips based on your profile.")
     st.write("Please enter your information in the fields on the left and click 'Check Profile' to get started.")
@@ -228,12 +252,10 @@ if nav_choice == "Home":
                     st.write(f"- {tip}")
                 st.markdown("</div>", unsafe_allow_html=True)
 
-
-
         except Exception as e:
             st.error(f"An error occurred while processing your request: {e}")
 
-elif nav_choice == "About":
+with tabs[1]:
     st.title("About the App")
     st.write("This app is designed to help users assess their health risk and receive personalized health tips")
     st.write("based on their profile. Here's what the app can currently do:")
@@ -242,7 +264,7 @@ elif nav_choice == "About":
     st.write("- Predict the user's health risk and cluster based on machine learning models.")
     st.write("- Display personalized health tips based on the predicted cluster.")
 
-elif nav_choice == "The Team":
+with tabs[2]:
     st.title("Meet the Team")
     team_members = [
         ("Moses Kigo", "moses.wanja@student.moringaschool.com"),

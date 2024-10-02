@@ -42,39 +42,48 @@ st.markdown(
         margin-top: -5px !important; /* Adjust this value based on how much the tabs are pushed down */
     }}
 
-    /* Custom styling for tabs */
+    /* Custom styling for the tab list container */
+    .stTabs [role="tablist"] {{
+        display: flex;
+        justify-content: space-evenly; /* Evenly space tabs across the available width */
+        flex-wrap: wrap; /* Allow the tabs to wrap to a new line if the window is too narrow */
+        margin: 0;
+        padding: 0;
+    }}
+
+    /* Custom styling for individual tabs */
     .stTabs [role="tablist"] > div {{
+        flex-grow: 1; /* Allow tabs to grow and fill available space */
+        flex-basis: 0; /* Distribute tabs evenly across the row */
         border-radius: 8px;
         padding: 10px;
-        font-size: 1000px !important;
+        font-size: 80px !important; /* Larger font size to match the example */
+        letter-spacing: 2px !important; /* Increase letter spacing for a clean, spaced-out look */
         font-weight: bold !important;
-        color: #333 !important; /* Default text color */
-        background-color: rgba(240, 240, 240, 0.08) !important; /* Make background more transparent */
-        border: 2px solid rgba(204, 204, 204, 0.08); /* Make border more transparent */
-        margin-right: 5px;
-        margin-bottom: 10px;
+        color: #4b0082 !important; /* Match the text color to the purple in your image */
+        background-color: transparent !important; /* Transparent background to match the style */
+        border: none; /* Remove borders */
+        margin: 5px;
         text-align: center;
-        width: 70px;  /* Increase the tab width */
         transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color */
         z-index: 1;  /* Ensure the tab stays on top */
     }}
 
     /* Hover effect for tabs */
     .stTabs [role="tablist"] > div:hover {{
-        background-color: rgba(230, 230, 230, 0.8) !important;
+        color: #6a0dad !important; /* Lighter purple on hover */
+        cursor: pointer; /* Show the pointer cursor on hover */
     }}
 
     /* Active tab styling */
     .stTabs [role="tablist"] > div[aria-selected="true"] {{
-        background-color: rgba(220, 220, 220, 0.9) !important; /* Slightly transparent background */
-        color: black !important; /* Change text color to black when active */
-        border-color: #888;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
+        color: #6a0dad !important; /* Slightly lighter purple when active */
+        border-bottom: 2px solid #6a0dad !important; /* Underline the active tab */
         z-index: 2; /* Ensure the active tab is on top */
         position: relative;
     }}
 
-    /* Disclaimer box styling */
+    /* Responsive disclaimer box styling */
     .disclaimer-box {{
         background-color: rgba(248, 215, 218, 0.8);
         padding: 20px;
@@ -82,9 +91,11 @@ st.markdown(
         border-radius: 10px;
         border: 1px solid #f5c6cb;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 800px;
+        width: 90%; /* Make the disclaimer responsive to screen size */
+        max-width: 800px; /* Maximum width to prevent it from being too wide */
         text-align: left;
+        margin-left: auto;
+        margin-right: auto; /* Center the disclaimer on the page */
     }}
 
     .disclaimer-box h4 {{
@@ -107,8 +118,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
 # Create navigation tabs
-tabs = st.tabs(["🏠 HOME", "📄 ABOUT", "👥 TEAM"])
+tabs = st.tabs(["HOME", "ABOUT", "TEAM"])
 
 with tabs[0]:
     st.title("Welcome to the Cardiovascular Risk Checker")
@@ -273,14 +285,17 @@ with tabs[1]:
     st.write("- Predict the user's health risk and cluster based on machine learning models.")
     st.write("- Display personalized health tips based on the predicted cluster.")
 
+    # Project repo link
+    st.markdown("You can check out the project repository [here](https://github.com/moseskigo/Capstone-Project).")
+
 with tabs[2]:
     st.title("Meet the Team")
     team_members = [
-        ("Moses Kigo", "moses.wanja@student.moringaschool.com"),
-        ("Erik Lekishon", "eric.lekishon@student.moringaschool.com"),
-        ("Josephine Gathenya", "josephine.wanjiru@student.moringaschool.com"),
-        ("Chepkemoi Chepkemoi", "chepkemoi.chepkemoi@student.moringaschool.com"),
-        ("Eunita Nyengo", "eunita.nyengo@student.moringaschool.com")
+        ("Moses Kigo", "https://github.com/moseskigo"),
+        ("Erik Lekishon", "https://github.com/kiranja110"),
+        ("Josephine Gathenya", "https://github.com/JosephineWanjiru7"),
+        ("Chepkemoi Chepkemoi", "https://github.com/MercyChepChep"),
+        ("Eunita Nyengo", "https://github.com/NyarKolusi")
     ]
-    for member, email in team_members:
-        st.write(f"- **{member}**: [{email}](mailto:{email})")
+    for member, github_url in team_members:
+        st.markdown(f"- **[{member}]({github_url})**")

@@ -22,7 +22,6 @@ st.set_page_config(
     page_icon="💓"
 )
 
-
 # Embedding the CSS to style the tabs and the background
 st.markdown(
     f"""

@@ -5,14 +5,21 @@ from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBClassifier
 import sklearn.metrics
 import base64
+import requests
 
 # Function to get base64 string for an image
 def get_base64_encoded_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode('utf-8')
 
-# Base64 image string for background
-background_image = get_base64_encoded_image('images/background.jpg')
+# Function to get base64 string for an image from a URL
+def get_base64_encoded_image_from_url(url):
+    response = requests.get(url)
+    return base64.b64encode(response.content).decode('utf-8')
+
+# Use the GitHub link for the background image
+background_image_url = 'https://github.com/moseskigo/Capstone-Project/raw/main/images/background.jpg'
+background_image = get_base64_encoded_image_from_url(background_image_url)
 
 
 # Set page config with an appropriate icon
